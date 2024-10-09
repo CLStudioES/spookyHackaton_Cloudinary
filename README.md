@@ -22,3 +22,6 @@ Todos los comandos que puedes usar para correr el proyecto desde la terminal
 
 MIDUDEV - TAILWIND_ANIMATIONS 🤙:
 - 🎊: [REPO MIDUDEV](https://github.com/midudev/tailwind-animations)
+
+CLOUDINARY - IA IMAGES & VIDEOS 🤖:
+- 🎊: [CLOUDINARY WEBSITE](https://cloudinary.com/blog/cloudinary-cloudcreate-spooky-ai-hackathon)
