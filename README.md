@@ -5,7 +5,7 @@
 ![Tailwind CSS Badge](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?logo=tailwindcss&logoColor=fff&style=flat)
 ![Vanilla Javascript Badge](https://img.shields.io/badge/Javascript-f0db4f?logo=javascript&logoColor=fff&style=flat)
 
->  **BIENVENIDO** al proyecto no official de la Pokédex hecha por fans para fans.
+>  **BIENVENIDO** al proyecto para la Spooky AI Hackaton de Cloudinary y Midudev
 
 ## 💻: Comandos
 
@@ -21,5 +21,5 @@ Todos los comandos que puedes usar para correr el proyecto desde la terminal
 
 **GRACIAS POR VUESTRO APOYO A LA COMUNIDAD DEV**
 
-POKEAPI:
-- 🎮 - [POKEAPI]([https://github.com/midudev/tailwind-animations](https://pokeapi.co/))
+MIDUDEV - TAILWIND_ANIMATIONS 🤙:
+- 🎊: [REPO MIDUDEV](https://github.com/midudev/tailwind-animations)
