@@ -3,35 +3,433 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Spooky Hackaton">
-	<main class="">
+	<main>
+		<div id="foglayer_01" class="fog">
+			<div class="image01"></div>
+			<div class="image02"></div>
+		</div>
+		<div id="foglayer_02" class="fog">
+			<div class="image01"></div>
+			<div class="image02"></div>
+		</div>
+		<div id="foglayer_03" class="fog">
+			<div class="image01"></div>
+			<div class="image02"></div>
+		</div>
+		<div class="moon"></div>
 		<section
 			id="title"
 			class="flex flex-col items-center justify-center h-screen animate-bouncing animate-iteration-count-infinite animate-duration-1000"
 		>
 			<h1
-				class="text-white fuente-creepster font-extralight text-9xl tracking-widest mx-auto"
+				class="fuente-creepster font-extralight text-4xl lg:text-9xl tracking-widest mx-auto text-trickle-purple text-green-glow"
 			>
 				Spooky Hackaton
 			</h1>
 			<h2
-				class="text-white fuente-urbanist font-extralight text-4xl tracking-widest mx-auto py-8"
+				class="text-white fuente-urbanist font-extralight text-sm lg:text-4xl tracking-widest mx-auto lg:pt-8"
 			>
 				- Design your adventure -
 			</h2>
-			<div class="flex flex-row items center justify-center gap-x-8 pb-8">
-				<img
-					class="h-7 w-auto"
-					src="/img/corporative/logo_cloudinary.png"
-				/>
-				<img
-					class="h-7 w-auto"
-					src="/img/corporative/logo_midudev.png"
-				/>
-			</div>
-			<button
-				class="px-16 py-3 bg-white text-black rounded-xl border-black hover:animate-rotational-wave"
-				>Empezar</button
+			<a
+				transition:name="grave"
+				id="startButton"
+				href="/personaje"
+				class="relative px-14 py-5 mt-8 lg:mt-24 text-black rounded-xl hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite fuente-urbanist lg:text-2xl font-bold tracking-widest"
 			>
+				<div
+					class="absolute inset-0 bg-[url('/img/ui/grave_texture_3.png')] bg-contain bg-no-repeat rounded-3xl object-green-glow my-auto mx-auto mb-1 lg:mr-2"
+				>
+				</div>
+				<span class="relative graven-text">Empezar </span>
+			</a>
 		</section>
 	</main>
 </Layout>
+<style>
+	.moon {
+		position: absolute;
+		z-index: 2;
+		width: 30vmin;
+		height: 30vmin;
+		right: 10vmin;
+		top: 10vmin;
+		opacity: 1;
+		border-radius: 100%;
+		animation: start-moon 3s ease 0s 1;
+		background: radial-gradient(
+				circle at 50% 50%,
+				#fdfdfd 0% 7vmin,
+				#ffffff00 7.25vmin 100%
+			),
+			#fff;
+		box-shadow:
+			0 0 8em 4em #6493a9,
+			0 0 8em -16em #ff660000 inset,
+			0 0 20px 5px #fdfdfd;
+	}
+
+	.moon:before {
+		content: "";
+		background: radial-gradient(
+			circle at 100% 60%,
+			#ffffff00 0% 60%,
+			#dddddd 75% 100%
+		);
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0%;
+		left: 0%;
+		border-radius: 100%;
+	}
+
+	.moon:after {
+		content: "";
+		background: radial-gradient(
+			circle at 0% 40%,
+			#efefef 0% 60%,
+			#ededed 75% 100%
+		);
+		width: 4.5vmin;
+		height: 4.5vmin;
+		position: absolute;
+		top: 20%;
+		left: 20%;
+		border-radius: 100%;
+		filter: blur(2px);
+	}
+	/* ---------- Fog ---------- */
+	.fogwrapper {
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		-webkit-filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+		filter: blur(1px) grayscale(0.2) saturate(1.2) sepia(0.2);
+	}
+	#foglayer_01,
+	#foglayer_02,
+	#foglayer_03 {
+		height: 100%;
+		position: absolute;
+		width: 200%;
+	}
+	#foglayer_01 .image01,
+	#foglayer_01 .image02,
+	#foglayer_02 .image01,
+	#foglayer_02 .image02,
+	#foglayer_03 .image01,
+	#foglayer_03 .image02 {
+		float: left;
+		height: 100%;
+		width: 50%;
+	}
+	#foglayer_01 {
+		-webkit-animation:
+			foglayer_01_opacity 10s linear infinite,
+			foglayer_moveme 15s linear infinite;
+		-moz-animation:
+			foglayer_01_opacity 10s linear infinite,
+			foglayer_moveme 15s linear infinite;
+		animation:
+			foglayer_01_opacity 10s linear infinite,
+			foglayer_moveme 15s linear infinite;
+	}
+	#foglayer_02,
+	#foglayer_03 {
+		-webkit-animation:
+			foglayer_02_opacity 21s linear infinite,
+			foglayer_moveme 13s linear infinite;
+		-moz-animation:
+			foglayer_02_opacity 21s linear infinite,
+			foglayer_moveme 13s linear infinite;
+		animation:
+			foglayer_02_opacity 21s linear infinite,
+			foglayer_moveme 13s linear infinite;
+	}
+
+	/* ---------- Moving Fog ---------- */
+	/*
+  'size: cover' || 'size: 100%'; results remain the same
+  'attachment: scroll' can be added or removed; results remain the same
+  'attachment: fixed' causing unexpected results in Chrome
+  'repeat-x' || 'no-repeat'; results remain the same
+*/
+	#foglayer_01 .image01,
+	#foglayer_01 .image02 {
+		background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png")
+			center center/cover no-repeat transparent;
+	}
+	#foglayer_02 .image01,
+	#foglayer_02 .image02,
+	#foglayer_03 .image01,
+	#foglayer_03 .image02 {
+		background: url("https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png")
+			center center/cover no-repeat transparent;
+	}
+
+	/* ---------- Keyframe Layer 1 ---------- */
+	@-webkit-keyframes foglayer_01_opacity {
+		0% {
+			opacity: 0.1;
+		}
+		22% {
+			opacity: 0.5;
+		}
+		40% {
+			opacity: 0.28;
+		}
+		58% {
+			opacity: 0.4;
+		}
+		80% {
+			opacity: 0.16;
+		}
+		100% {
+			opacity: 0.1;
+		}
+	}
+	@-moz-keyframes foglayer_01_opacity {
+		0% {
+			opacity: 0.1;
+		}
+		22% {
+			opacity: 0.5;
+		}
+		40% {
+			opacity: 0.28;
+		}
+		58% {
+			opacity: 0.4;
+		}
+		80% {
+			opacity: 0.16;
+		}
+		100% {
+			opacity: 0.1;
+		}
+	}
+	@-o-keyframes foglayer_01_opacity {
+		0% {
+			opacity: 0.1;
+		}
+		22% {
+			opacity: 0.5;
+		}
+		40% {
+			opacity: 0.28;
+		}
+		58% {
+			opacity: 0.4;
+		}
+		80% {
+			opacity: 0.16;
+		}
+		100% {
+			opacity: 0.1;
+		}
+	}
+	@keyframes foglayer_01_opacity {
+		0% {
+			opacity: 0.1;
+		}
+		22% {
+			opacity: 0.5;
+		}
+		40% {
+			opacity: 0.28;
+		}
+		58% {
+			opacity: 0.4;
+		}
+		80% {
+			opacity: 0.16;
+		}
+		100% {
+			opacity: 0.1;
+		}
+	}
+	/* ---------- Keyframe Layer 2 ---------- */
+	@-webkit-keyframes foglayer_02_opacity {
+		0% {
+			opacity: 0.5;
+		}
+		25% {
+			opacity: 0.2;
+		}
+		50% {
+			opacity: 0.1;
+		}
+		80% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+	@-moz-keyframes foglayer_02_opacity {
+		0% {
+			opacity: 0.5;
+		}
+		25% {
+			opacity: 0.2;
+		}
+		50% {
+			opacity: 0.1;
+		}
+		80% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+	@-o-keyframes foglayer_02_opacity {
+		0% {
+			opacity: 0.5;
+		}
+		25% {
+			opacity: 0.2;
+		}
+		50% {
+			opacity: 0.1;
+		}
+		80% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+	@keyframes foglayer_02_opacity {
+		0% {
+			opacity: 0.5;
+		}
+		25% {
+			opacity: 0.2;
+		}
+		50% {
+			opacity: 0.1;
+		}
+		80% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+	/* ---------- Keyframe Layer 3 ---------- */
+	@-webkit-keyframes foglayer_03_opacity {
+		0% {
+			opacity: 0.8;
+		}
+		27% {
+			opacity: 0.2;
+		}
+		52% {
+			opacity: 0.6;
+		}
+		68% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.8;
+		}
+	}
+	@-moz-keyframes foglayer_03_opacity {
+		0% {
+			opacity: 0.8;
+		}
+		27% {
+			opacity: 0.2;
+		}
+		52% {
+			opacity: 0.6;
+		}
+		68% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.8;
+		}
+	}
+	@-o-keyframes foglayer_03_opacity {
+		0% {
+			opacity: 0.8;
+		}
+		27% {
+			opacity: 0.2;
+		}
+		52% {
+			opacity: 0.6;
+		}
+		68% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.8;
+		}
+	}
+	@keyframes foglayer_03_opacity {
+		0% {
+			opacity: 0.8;
+		}
+		27% {
+			opacity: 0.2;
+		}
+		52% {
+			opacity: 0.6;
+		}
+		68% {
+			opacity: 0.3;
+		}
+		100% {
+			opacity: 0.8;
+		}
+	}
+	/* ---------- Keyframe moveMe ---------- */
+	@-webkit-keyframes foglayer_moveme {
+		0% {
+			left: 0;
+		}
+		100% {
+			left: -100%;
+		}
+	}
+	@-moz-keyframes foglayer_moveme {
+		0% {
+			left: 0;
+		}
+		100% {
+			left: -100%;
+		}
+	}
+	@-o-keyframes foglayer_moveme {
+		0% {
+			left: 0;
+		}
+		100% {
+			left: -100%;
+		}
+	}
+	@keyframes foglayer_moveme {
+		0% {
+			left: 0;
+		}
+		100% {
+			left: -100%;
+		}
+	}
+
+	@media only screen and (min-width: 280px) and (max-width: 767px) {
+		#foglayer_01 .image01,
+		#foglayer_01 .image02,
+		#foglayer_02 .image01,
+		#foglayer_02 .image02,
+		#foglayer_03 .image01,
+		#foglayer_03 .image02 {
+			width: 100%;
+		}
+	}
+</style>

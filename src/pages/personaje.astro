@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Spooky Hackaton-Crea tu personaje">
+    <main>
+        <div class="h-screen w-screen flex items-center justify-center">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="p-4">
+                    <a
+                        transition:name="grave"
+                        id="startButton"
+                        href="/personaje"
+                        class="relative px-16 py-5 mt-24 text-black rounded-xl hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite object-green-glow graven-text fuente-urbanist text-2xl font-bold tracking-widest"
+                    >
+                        <div
+                            class="absolute inset-0 bg-[url('/img/ui/grave_texture_1.jpg')] bg-cover bg-no-repeat opacity-65"
+                        >
+                        </div>
+                        <span class="relative">Empezar </span>
+                    </a>
+                </div>
+                <div class="p-4 rounded bg-white">Grid Item 2</div>
+            </div>
+        </div>
+    </main>
+</Layout>

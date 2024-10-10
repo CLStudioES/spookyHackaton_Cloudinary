@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 import "@fontsource/caveat-brush";
 import "@fontsource/permanent-marker";
 import "@fontsource/creepster";
@@ -19,6 +21,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
 		<slot />
@@ -27,7 +30,8 @@ const { title } = Astro.props;
 <style is:global>
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: #111111;
+		overflow-x: hidden;
 	}
 	.fuente-caveat {
 		font-family: "Caveat Brush", cursive;
@@ -40,5 +44,79 @@ const { title } = Astro.props;
 	}
 	.fuente-urbanist {
 		font-family: "Urbanist Variable", sans-serif;
+	}
+	.text-green-glow {
+		text-shadow:
+			0 0 10px #adef13,
+			0 0 20px #adef13,
+			0 0 30px #adef13,
+			0 0 40px #adef13;
+		padding: 20px;
+		animation: text-pulsate 2s ease-in-out infinite;
+	}
+	.object-green-glow {
+		box-shadow:
+			0 0 5px #adef13,
+			0 0 10px #adef13,
+			0 0 15px #adef13,
+			0 0 20px #adef13;
+		animation: object-pulsate 2s ease-in-out infinite;
+	}
+
+	@keyframes text-pulsate {
+		0% {
+			text-shadow:
+				0 0 4px #adef13,
+				0 0 11px #adef13,
+				0 0 19px #adef13,
+				0 0 40px #adef13;
+		}
+
+		50% {
+			text-shadow:
+				0 0 8px #adef13,
+				0 0 22px #adef13,
+				0 0 38px #adef13,
+				0 0 80px #adef13;
+		}
+
+		100% {
+			text-shadow:
+				0 0 4px #adef13,
+				0 0 11px #adef13,
+				0 0 19px #adef13,
+				0 0 40px #adef13;
+		}
+	}
+	@keyframes object-pulsate {
+		0% {
+			box-shadow:
+				0 0 2px #adef13,
+				0 0 6px #adef13,
+				0 0 9px #adef13,
+				0 0 20px #adef13;
+		}
+
+		50% {
+			box-shadow:
+				0 0 4px #adef13,
+				0 0 11px #adef13,
+				0 0 19px #adef13,
+				0 0 40px #adef13;
+		}
+
+		100% {
+			box-shadow:
+				0 0 2px #adef13,
+				0 0 6px #adef13,
+				0 0 9px #adef13,
+				0 0 20px #adef13;
+		}
+	}
+	.graven-text {
+		text-shadow:
+			1px 1px 1px rgba(240, 240, 240, 0.75),
+			-1px -1px 1px rgba(0, 0, 0, 0.75);
+		font-weight: bold;
 	}
 </style>
