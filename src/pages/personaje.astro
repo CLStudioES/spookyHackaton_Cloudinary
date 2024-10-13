@@ -2,46 +2,6 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<script is:inline>
-    function updateLabels() {
-        const inputName = document.getElementById("inputName");
-        const inputFnacimiento = document.getElementById("inputFnacimiento");
-        const inputPalabras = document.getElementById("inputPalabras");
-        const nombreDisplay = document.getElementById("labelNombre");
-        const labelFNacimiento = document.getElementById("labelFNacimiento");
-        const labelPalabras = document.getElementById("labelPalabras");
-
-        if (inputName) {
-            inputName.addEventListener("input", function () {
-                nombreDisplay.textContent = this.value || "Nombre del difunto";
-            });
-        }
-
-        if (inputFnacimiento) {
-            inputFnacimiento.addEventListener("input", function () {
-                labelFNacimiento.textContent = this.value || "2024-10-22";
-            });
-        }
-
-        if (inputPalabras) {
-            inputPalabras.addEventListener("input", function () {
-                labelPalabras.textContent = this.value
-                    ? `"${this.value}"`
-                    : "FINIS OMNIS VITA MORS EST";
-            });
-        }
-    }
-
-    // Run once when the script loads
-    updateLabels();
-
-    // Run again after a short delay to ensure all elements are loaded
-    setTimeout(updateLabels, 100);
-
-    // Optional: Run when the DOM is fully loaded
-    document.addEventListener("DOMContentLoaded", updateLabels);
-</script>
-
 <Layout title="Spooky Hackaton-Crea tu personaje">
     <main>
         <div id="background">
@@ -139,4 +99,46 @@ import Layout from "../layouts/Layout.astro";
             </div>
         </section>
     </main>
+    <script is:inline>
+        function updateLabels() {
+            const inputName = document.getElementById("inputName");
+            const inputFnacimiento =
+                document.getElementById("inputFnacimiento");
+            const inputPalabras = document.getElementById("inputPalabras");
+            const nombreDisplay = document.getElementById("labelNombre");
+            const labelFNacimiento =
+                document.getElementById("labelFNacimiento");
+            const labelPalabras = document.getElementById("labelPalabras");
+
+            if (inputName) {
+                inputName.addEventListener("input", function () {
+                    nombreDisplay.textContent =
+                        this.value || "Nombre del difunto";
+                });
+            }
+
+            if (inputFnacimiento) {
+                inputFnacimiento.addEventListener("input", function () {
+                    labelFNacimiento.textContent = this.value || "2024-10-22";
+                });
+            }
+
+            if (inputPalabras) {
+                inputPalabras.addEventListener("input", function () {
+                    labelPalabras.textContent = this.value
+                        ? `"${this.value}"`
+                        : "FINIS OMNIS VITA MORS EST";
+                });
+            }
+        }
+
+        // Run once when the script loads
+        updateLabels();
+
+        // Run again after a short delay to ensure all elements are loaded
+        setTimeout(updateLabels, 100);
+
+        // Optional: Run when the DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", updateLabels);
+    </script>
 </Layout>
