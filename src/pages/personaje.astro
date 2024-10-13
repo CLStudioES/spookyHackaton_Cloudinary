@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const fecha = "12/02/1994";
 ---
 
 <Layout title="Spooky Hackaton-Crea tu personaje">
@@ -21,77 +19,107 @@ const fecha = "12/02/1994";
             </div>
             <div class="moon"></div>
         </div>
-        <div
-            class="grid grid-cols-1 lg:grid-cols-2 gap-4 h-screen items-center justify-center z-50"
-        >
-            <section
-                class="flex flex-col items-center justify-center py-8 lg:px-44 animate-fade-in-up animate-duration-1000 z-50"
+        <section class="min-h-screen flex items-center justify-center">
+            <div
+                class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:h-[75vh] lg:w-[75vw] gap-x-36 z-50"
             >
                 <div
-                    class="bg-[url('/img/elements/grave.png')] bg-contain bg-no-repeat h-[80vh] w-full"
+                    class="p-4 rounded flex items-center justify-center relative"
                 >
-                    <article class="flex flex-col items-center">
-                        <div
-                            class="w-32 h-32 lg:h-40 lg:w-40 rounded-full bg-white mt-12 lg:mt-20"
-                        >
-                        </div>
-                        <div
-                            class="h-64 w-[45%] flex flex-col items-center lg:pt-4 pb-12 mt-8 lg:mt-12 overflow-hidden"
-                        >
+                    <img
+                        src="/img/elements/grave.png"
+                        alt="Grave"
+                        class="w-full h-auto"
+                    />
+                    <article
+                        class="absolute inset-0 flex flex-col items-center my-20 lg:my-36 lg:mx-56"
+                    >
+                        <header class="flex flex-col items-center">
+                            <span
+                                class="h-24 w-24 lg:h-44 lg:w-44 bg-white rounded-full"
+                            ></span>
                             <h2
-                                id="Nombre"
-                                class="text-sm lg:text-xl graven-text uppercase truncate w-full text-center"
+                                id="labelNombre"
+                                class="text-sm lg:text-2xl graven-text uppercase w-40 lg:w-96 truncate text-center pt-4 lg:pt-8"
                             >
-                                Carlos López Merino
+                                Nombre del difunto
                             </h2>
                             <p
-                                id="FNacimiento"
-                                class="graven-text text-xs lg:text-base uppercase truncate w-full text-center pt-3"
+                                class="graven-text uppercase truncate text-center pt-1 lg:pt-3 text-xs lg:text-xl"
                             >
-                                {fecha} - 22/10/2024
+                                <span id="labelFNacimiento">2024-10-22</span> - 2024-10-22
                             </p>
+                        </header>
+                        <footer class="my-auto bottom-0 flex overflow-clip">
                             <p
-                                class="graven-text text-xs lg:text-base uppercase w-full text-center pt-8"
+                                id="labelPalabras"
+                                class="graven-text uppercase w-40 lg:w-96 text-xs lg:text-2xl text-center lg:pt-36"
                             >
                                 "FINIS OMNIS VITA MORS EST"
                             </p>
-                        </div>
+                        </footer>
                     </article>
                 </div>
-            </section>
-            <!-- <section
-                class="flex flex-col items-center justify-center py-8 lg:px-44 animate-fade-in-up animate-duration-1000 z-50"
-            >
-                <div
-                    class="bg-[url('/img/elements/grave.png')] bg-contain bg-no-repeat h-[80vh] w-full"
-                >
-                    <article class="flex flex-col items-center">
-                        <div class="h-40 w-40 rounded-full bg-white mt-20">
-                        </div>
-                        <div
-                            class="h-64 w-[45%] flex flex-col items-center pt-4 pb-12 mt-12 overflow-hidden"
-                        >
-                            <h2
-                                id="Nombre"
-                                class="text-xl graven-text uppercase truncate w-full text-center"
-                            >
-                                Carlos López Merino
-                            </h2>
-                            <p
-                                id="FNacimiento"
-                                class="graven-text uppercase truncate w-full text-center pt-3"
-                            >
-                                {fecha} - 22/10/2024
-                            </p>
-                            <p
-                                class="graven-text uppercase w-full text-center pt-8"
-                            >
-                                "FINIS OMNIS VITA MORS EST"
-                            </p>
-                        </div>
+                <div class="p-4 flex items-center justify-center">
+                    <article
+                        class="bg-white h-auto w-full lg:w-[75%] rounded-2xl bg-opacity-70 flex flex-col p-8 lg:p-12"
+                    >
+                        <h2 class="text-5xl fuente-handwritte font-bold">
+                            ¿Quién eres?
+                        </h2>
+                        <h3 class="text-2xl fuente-handwritte font-bold pt-12">
+                            Nombre y apellidos:
+                        </h3>
+                        <input
+                            id="inputName"
+                            type="text"
+                            placeholder="Nombre y apellidos del difunto"
+                            class="mt-3 bg-white bg-opacity-50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-trickle-purple focus:border-transparent"
+                        />
+                        <h3 class="text-2xl fuente-handwritte font-bold pt-12">
+                            Fecha de nacimiento
+                        </h3>
+                        <input
+                            id="inputFnacimiento"
+                            type="date"
+                            placeholder="Fecha de nacimiento del difunto"
+                            class="mt-3 bg-white bg-opacity-50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-trickle-purple focus:border-transparent"
+                        />
+                        <h3 class="text-2xl fuente-handwritte font-bold pt-12">
+                            Últimas palabras
+                        </h3>
+                        <textarea
+                            maxlength="70"
+                            id="inputPalabras"
+                            placeholder="Últimas palabras del difunto"
+                            class="mt-3 bg-white bg-opacity-50 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-trickle-purple focus:border-transparent"
+                        ></textarea>
                     </article>
                 </div>
-            </section> -->
-        </div>
+            </div>
+        </section>
     </main>
 </Layout>
+
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputName = document.getElementById("inputName");
+        const inputFnacimiento = document.getElementById("inputFnacimiento");
+        const inputPalabras = document.getElementById("inputPalabras");
+        const nombreDisplay = document.getElementById("labelNombre");
+        const labelFNacimiento = document.getElementById("labelFNacimiento");
+        const labelPalabras = document.getElementById("labelPalabras");
+
+        inputName.addEventListener("input", function () {
+            nombreDisplay.textContent = this.value || "Nombre del difunto"; // Default text if input is empty
+        });
+        inputFnacimiento.addEventListener("input", function () {
+            labelFNacimiento.textContent = this.value || "2024/10/22"; // Default text if input is empty
+        });
+        inputPalabras.addEventListener("input", function () {
+            labelPalabras.textContent = this.value
+                ? `"${this.value}"`
+                : "FINIS OMNIS VITA MORS EST";
+        });
+    });
+</script>
