@@ -132,13 +132,8 @@ import Layout from "../layouts/Layout.astro";
             }
         }
 
-        // Run once when the script loads
         updateLabels();
-
-        // Run again after a short delay to ensure all elements are loaded
         setTimeout(updateLabels, 100);
-
-        // Optional: Run when the DOM is fully loaded
         document.addEventListener("DOMContentLoaded", updateLabels);
     </script>
 </Layout>
