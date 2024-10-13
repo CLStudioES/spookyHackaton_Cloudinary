@@ -2,6 +2,28 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
+<script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputName = document.getElementById("inputName");
+        const inputFnacimiento = document.getElementById("inputFnacimiento");
+        const inputPalabras = document.getElementById("inputPalabras");
+        const nombreDisplay = document.getElementById("labelNombre");
+        const labelFNacimiento = document.getElementById("labelFNacimiento");
+        const labelPalabras = document.getElementById("labelPalabras");
+
+        inputName.addEventListener("input", function () {
+            nombreDisplay.textContent = this.value || "Nombre del difunto"; // Default text if input is empty
+        });
+        inputFnacimiento.addEventListener("input", function () {
+            labelFNacimiento.textContent = this.value || "2024/10/22"; // Default text if input is empty
+        });
+        inputPalabras.addEventListener("input", function () {
+            labelPalabras.textContent = this.value
+                ? `"${this.value}"`
+                : "FINIS OMNIS VITA MORS EST";
+        });
+    });
+</script>
 <Layout title="Spooky Hackaton-Crea tu personaje">
     <main>
         <div id="background">
@@ -100,26 +122,3 @@ import Layout from "../layouts/Layout.astro";
         </section>
     </main>
 </Layout>
-
-<script type="module">
-    document.addEventListener("DOMContentLoaded", function () {
-        const inputName = document.getElementById("inputName");
-        const inputFnacimiento = document.getElementById("inputFnacimiento");
-        const inputPalabras = document.getElementById("inputPalabras");
-        const nombreDisplay = document.getElementById("labelNombre");
-        const labelFNacimiento = document.getElementById("labelFNacimiento");
-        const labelPalabras = document.getElementById("labelPalabras");
-
-        inputName.addEventListener("input", function () {
-            nombreDisplay.textContent = this.value || "Nombre del difunto"; // Default text if input is empty
-        });
-        inputFnacimiento.addEventListener("input", function () {
-            labelFNacimiento.textContent = this.value || "2024/10/22"; // Default text if input is empty
-        });
-        inputPalabras.addEventListener("input", function () {
-            labelPalabras.textContent = this.value
-                ? `"${this.value}"`
-                : "FINIS OMNIS VITA MORS EST";
-        });
-    });
-</script>
