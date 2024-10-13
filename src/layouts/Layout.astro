@@ -126,23 +126,24 @@ const { title } = Astro.props;
 
 	.moon {
 		position: absolute;
-		width: 30vmin;
-		height: 30vmin;
-		right: 10vmin;
-		top: 10vmin;
+		width: 35vmin;
+		height: 35vmin;
+		right: 15vmin;
+		top: 20vmin;
 		opacity: 1;
 		border-radius: 100%;
 		animation: start-moon 3s ease 0s 1;
 		background: radial-gradient(
 				circle at 50% 50%,
-				#fdfdfd 0% 7vmin,
+				#e7c89fc5 0% 7vmin,
+				#f3e9b6 80% 7vmin,
 				#ffffff00 7.25vmin 100%
 			),
 			#fff;
 		box-shadow:
-			0 0 8em 4em #6493a9,
-			0 0 8em -16em #ff660000 inset,
-			0 0 20px 5px #fdfdfd;
+			0 0 8em 4em #f3e9b6,
+			0 0 8em -16em #f1c75d inset,
+			0 0 20px 5px #f1c75d;
 	}
 
 	.moon:before {
@@ -150,7 +151,7 @@ const { title } = Astro.props;
 		background: radial-gradient(
 			circle at 100% 60%,
 			#ffffff00 0% 60%,
-			#dddddd 75% 100%
+			#f3e9b6 75% 100%
 		);
 		width: 100%;
 		height: 100%;
@@ -164,8 +165,8 @@ const { title } = Astro.props;
 		content: "";
 		background: radial-gradient(
 			circle at 0% 40%,
-			#efefef 0% 60%,
-			#ededed 75% 100%
+			#f0c5573f 0% 60%,
+			#f3e9b6 75% 100%
 		);
 		width: 4.5vmin;
 		height: 4.5vmin;
