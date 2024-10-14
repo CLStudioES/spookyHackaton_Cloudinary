@@ -1,0 +1,188 @@
+<script is:inline>
+    let kioskMode = false;
+    function enterKioskMode() {
+        kioskMode = true;
+        // Request fullscreen
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) {
+            // Firefox
+            document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) {
+            // Chrome, Safari and Opera
+            document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) {
+            // IE/Edge
+            document.documentElement.msRequestFullscreen();
+        }
+
+        // Optionally, you might want to hide all scrollbars
+        document.body.style.overflow = "hidden";
+
+        console.log("Entered kiosk-like mode");
+    }
+
+    // Function to exit kiosk mode
+    function exitKioskMode() {
+        kioskMode = false;
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+
+        // Restore cursor
+        document.body.style.cursor = "auto";
+
+        // Re-enable text selection
+        document.body.style.userSelect = "auto";
+        document.body.style.webkitUserSelect = "auto";
+        document.body.style.msUserSelect = "auto";
+        document.body.style.mozUserSelect = "auto";
+
+        // Restore scrollbars
+        document.body.style.overflow = "auto";
+
+        console.log("Exited kiosk-like mode");
+    }
+
+    // Listen for fullscreen change
+    document.addEventListener("astro:page-load", () => {
+        const historyModeButton = document.getElementById("historyModeButton");
+        if (historyModeButton) {
+            historyModeButton.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (kioskMode === false) {
+                    enterKioskMode();
+                } else {
+                    exitKioskMode();
+                }
+            });
+        }
+    });
+</script>
+
+<div class="adminActions">
+    <input type="checkbox" name="adminToggle" class="adminToggle" />
+    <a class="adminButton" href="#!"><img src="/img/icons/cog.svg" /></a>
+    <div class="adminButtons">
+        <a id="historyModeButton" title="Modo historia">
+            <img src="/img/icons/fullWindow.svg" />
+        </a>
+    </div>
+</div>
+<style>
+    .adminActions {
+        position: fixed;
+        bottom: 35px;
+        left: 35px;
+        z-index: 100;
+    }
+
+    .adminButton {
+        height: 60px;
+        width: 60px;
+        background-color: #3d224b;
+        border-radius: 50%;
+        display: block;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .adminButton i {
+        font-size: 22px;
+    }
+
+    .adminButtons {
+        position: absolute;
+        width: 100%;
+        bottom: 120%;
+        text-align: center;
+    }
+
+    .adminButtons a {
+        display: block;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        text-decoration: none;
+        margin: 10px auto 0;
+        line-height: 1.15;
+        color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        position: relative;
+        box-shadow: 0 0 5px 1px rgba(51, 51, 51, 0.3);
+    }
+
+    .adminButtons a:hover {
+        transform: scale(1.05);
+    }
+
+    .adminButtons a:nth-child(1) {
+        background-color: rgba(173, 239, 19, 0.5);
+        transition:
+            opacity 0.2s ease-in-out 0.3s,
+            transform 0.15s ease-in-out;
+    }
+    .adminButtons a:nth-child(2) {
+        background-color: rgba(173, 239, 19, 0.5);
+        transition:
+            opacity 0.2s ease-in-out 0.3s,
+            transform 0.15s ease-in-out;
+    }
+    .adminButtons a:nth-child(3) {
+        background-color: rgba(173, 239, 19, 0.5);
+        transition:
+            opacity 0.2s ease-in-out 0.3s,
+            transform 0.15s ease-in-out;
+    }
+    .adminButtons a:nth-child(4) {
+        background-color: rgba(173, 239, 19, 0.5);
+        transition:
+            opacity 0.2s ease-in-out 0.3s,
+            transform 0.15s ease-in-out;
+    }
+
+    .adminActions a img {
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .adminToggle {
+        -webkit-appearance: none;
+        position: absolute;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        z-index: 2;
+        transition: box-shadow 0.2s ease-in-out;
+        box-shadow: 0 3px 5px 1px rgba(51, 51, 51, 0.3);
+    }
+
+    .adminToggle:hover {
+        box-shadow: 0 3px 6px 2px rgba(51, 51, 51, 0.3);
+    }
+
+    .adminToggle:checked ~ .adminButtons a {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
