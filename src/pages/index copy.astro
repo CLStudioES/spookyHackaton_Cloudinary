@@ -3,48 +3,77 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Spooky Hackaton">
-	<main class="bg-[url('/img/ui/backgrounds/1.png')] bg-cover bg-no-repeat">
-		<div class="absolute inset-0 z-20">
-			<div id="foglayer_01" class="fog hidden lg:flex">
-				<div class="image01"></div>
-				<div class="image02"></div>
+	<main class="lg:overflow-hidden">
+		<div class="relative h-screen w-screen">
+			<!-- Bottom layer -->
+			<div class="absolute inset-0 z-0">
+				<div class="moon"></div>
 			</div>
-			<div id="foglayer_02" class="fog hidden lg:flex">
-				<div class="image01"></div>
-				<div class="image02"></div>
+			<!-- Second layer -->
+			<div
+				class="absolute inset-0 z-10 bg-[url('/img/ui/backgrounds/composition/3.png')] bg-cover bg-left lg:bg-center bg-no-repeat"
+			>
 			</div>
-			<div id="foglayer_03" class="fog hidden lg:flex">
-				<div class="image01"></div>
-				<div class="image02"></div>
+			<div
+				class="absolute inset-0 z-10 bg-[url('/img/ui/backgrounds/composition/3.png')] bg-cover bg-left lg:bg-center bg-no-repeat"
+			>
+			</div>
+			<!-- Third layer -->
+			<div class="absolute inset-0 z-20">
+				<div id="foglayer_01" class="fog hidden lg:flex">
+					<div class="image01"></div>
+					<div class="image02"></div>
+				</div>
+				<div id="foglayer_02" class="fog hidden lg:flex">
+					<div class="image01"></div>
+					<div class="image02"></div>
+				</div>
+				<div id="foglayer_03" class="fog hidden lg:flex">
+					<div class="image01"></div>
+					<div class="image02"></div>
+				</div>
+			</div>
+			<!--Fourth layer -->
+			<div
+				transition:name="grave"
+				class="absolute inset-0 z-30 bg-[url('/img/ui/backgrounds/composition/2.png')] bg-cover bg-left lg:bg-center bg-no-repeat"
+			>
+			</div>
+			<!--Fifth layer -->
+			<div
+				class="absolute inset-0 z-40 bg-[url('/img/ui/backgrounds/composition/1.png')] bg-cover bg-left lg:bg-center bg-no-repeat"
+			>
+			</div>
+
+			<!--Front layer -->
+			<div class="absolute inset-0 z-50">
+				<section
+					id="title"
+					class="flex flex-col items-center justify-center h-screen animate-bouncing animate-iteration-count-infinite animate-duration-1000"
+				>
+					<h1
+						class="fuente-creepster font-extralight text-4xl lg:text-9xl tracking-widest mx-auto text-trickle-purple text-green-glow"
+					>
+						Spooky Hackaton
+					</h1>
+					<h2
+						class="text-white fuente-urbanist font-extralight text-sm lg:text-4xl tracking-widest mx-auto lg:pt-8"
+					>
+						- Design your adventure -
+					</h2>
+					<a
+						id="startButton"
+						href="/personaje"
+						class="relative px-14 py-5 mt-8 lg:mt-24 text-black rounded-xl hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite fuente-urbanist lg:text-2xl font-bold tracking-widest"
+					>
+						<div
+							class="absolute inset-0 bg-[url('/img/ui/grave_texture_3.png')] bg-contain bg-no-repeat rounded-3xl object-green-glow my-auto mx-auto mb-1 lg:mr-2"
+						>
+						</div>
+						<span class="relative graven-text">Empezar </span>
+					</a>
+				</section>
 			</div>
 		</div>
-		<div class="moon"></div>
-		<section
-			id="title"
-			class="flex flex-col items-center justify-center h-screen animate-bouncing animate-iteration-count-infinite animate-duration-1000"
-		>
-			<h1
-				class="fuente-creepster font-extralight text-4xl lg:text-9xl tracking-widest mx-auto text-trickle-purple text-green-glow"
-			>
-				Spooky Hackaton
-			</h1>
-			<h2
-				class="text-white fuente-urbanist font-extralight text-sm lg:text-4xl tracking-widest mx-auto lg:pt-8"
-			>
-				- Design your adventure -
-			</h2>
-			<a
-				transition:name="grave"
-				id="startButton"
-				href="/personaje"
-				class="relative px-14 py-5 mt-8 lg:mt-24 text-black rounded-xl hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite fuente-urbanist lg:text-2xl font-bold tracking-widest"
-			>
-				<div
-					class="absolute inset-0 bg-[url('/img/ui/grave_texture_3.png')] bg-contain bg-no-repeat rounded-3xl object-green-glow my-auto mx-auto mb-1 lg:mr-2"
-				>
-				</div>
-				<span class="relative graven-text">Empezar </span>
-			</a>
-		</section>
 	</main>
 </Layout>
