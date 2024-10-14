@@ -2,6 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
+<script is:inline>
+	function closeModal() {
+		const infoModalInicial = document.getElementById("infoModalInicial");
+		if (infoModalInicial) {
+			infoModalInicial.classList.add("hidden");
+		} else {
+			console.error("Element with ID 'infoModalInicial' not found");
+		}
+	}
+</script>
+
 <Layout title="Spooky Hackaton">
 	<main class="lg:overflow-hidden">
 		<div class="relative h-screen w-screen">
@@ -77,3 +88,34 @@ import Layout from "../layouts/Layout.astro";
 		</div>
 	</main>
 </Layout>
+
+<div
+	id="infoModalInicial"
+	class="fixed inset-0 modal flex items-center justify-center"
+>
+	<div class="absolute inset-0 bg-black opacity-50"></div>
+	<div
+		class="relative bg-trickle-purple object-green-glow rounded-lg p-8 max-w-lg w-full m-4 animate-fade-in-up text-white"
+	>
+		<h2 class="text-5xl fuente-handwritte font-bold">Aconsejamos</h2>
+		<h3 class="text-xl fuente-handwritte font-bold pt-4 tracking-widest">
+			Ajustar en el botón de la parte inferior izquierda el modo de
+			pantalla completa para difrutar al 100% de la interfaz. También se
+			recomienda jugar en un dispositivo con un aspecto de 16:9 y una
+			resolución FullHD o superior.
+		</h3>
+		<h3 class="text-xl fuente-handwritte font-bold pt-4 tracking-widest">
+			Difruta de la experiencia
+		</h3>
+		<button
+			onclick="closeModal();"
+			class="text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-shake"
+			>Cerrar</button
+		>
+	</div>
+</div>
+<style>
+	.modal {
+		z-index: 200;
+	}
+</style>

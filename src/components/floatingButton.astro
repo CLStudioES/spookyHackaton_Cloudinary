@@ -53,6 +53,9 @@
     // Listen for fullscreen change
     document.addEventListener("astro:page-load", () => {
         const historyModeButton = document.getElementById("historyModeButton");
+        const infoButton = document.getElementById("infoButton");
+        const infoModal = document.getElementById("infoModal");
+        const closeModal = document.getElementById("closeModal");
         if (historyModeButton) {
             historyModeButton.addEventListener("click", (e) => {
                 e.preventDefault();
@@ -63,19 +66,81 @@
                 }
             });
         }
+        function toggleModal() {
+            infoModal.classList.toggle("hidden");
+        }
+
+        if (infoButton && infoModal && closeModal) {
+            infoButton.addEventListener("click", (e) => {
+                e.preventDefault();
+                toggleModal();
+            });
+
+            closeModal.addEventListener("click", toggleModal);
+
+            // Close modal when clicking outside
+            infoModal.addEventListener("click", (e) => {
+                if (e.target === infoModal) {
+                    toggleModal();
+                }
+            });
+
+            // Close modal on escape key press
+            document.addEventListener("keydown", (e) => {
+                if (
+                    e.key === "Escape" &&
+                    !infoModal.classList.contains("hidden")
+                ) {
+                    toggleModal();
+                }
+            });
+        }
     });
 </script>
 
-<div class="adminActions hidden lg:flex">
+<div
+    class="adminActions hidden lg:flex opacity-50 hover:scale-105 hover:opacity-100 transition-all duration-200"
+>
     <input type="checkbox" name="adminToggle" class="adminToggle" />
     <a class="adminButton" href="#!"><img src="/img/icons/cog.svg" /></a>
     <div class="adminButtons">
+        <a id="infoButton" title="Información">
+            <img src="/img/icons/info.svg" />
+        </a>
         <a id="historyModeButton" title="Modo historia">
             <img src="/img/icons/fullWindow.svg" />
         </a>
     </div>
 </div>
+<div
+    id="infoModal"
+    class="fixed inset-0 modal flex items-center justify-center hidden"
+>
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div
+        class="relative bg-trickle-purple object-green-glow rounded-lg p-8 max-w-lg w-full m-4 animate-fade-in-up text-white"
+    >
+        <h2 class="text-5xl fuente-handwritte font-bold">Aconsejamos</h2>
+        <h3 class="text-xl fuente-handwritte font-bold pt-4 tracking-widest">
+            Ajustar en el botón de la parte inferior izquierda el modo de
+            pantalla completa para difrutar al 100% de la interfaz. También se
+            recomienda jugar en un dispositivo con un aspecto de 16:9 y una
+            resolución FullHD o superior.
+        </h3>
+        <h3 class="text-xl fuente-handwritte font-bold pt-4 tracking-widest">
+            Difruta de la experiencia
+        </h3>
+        <button
+            id="closeModal"
+            class="text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-shake"
+            >Cerrar</button
+        >
+    </div>
+</div>
 <style>
+    .modal {
+        z-index: 200;
+    }
     .adminActions {
         position: fixed;
         bottom: 35px;
