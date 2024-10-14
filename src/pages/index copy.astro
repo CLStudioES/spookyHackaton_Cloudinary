@@ -4,17 +4,19 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Spooky Hackaton">
 	<main class="bg-[url('/img/ui/backgrounds/1.png')] bg-cover bg-no-repeat">
-		<div id="foglayer_01" class="fog hidden lg:flex">
-			<div class="image01"></div>
-			<div class="image02"></div>
-		</div>
-		<div id="foglayer_02" class="fog hidden lg:flex">
-			<div class="image01"></div>
-			<div class="image02"></div>
-		</div>
-		<div id="foglayer_03" class="fog hidden lg:flex">
-			<div class="image01"></div>
-			<div class="image02"></div>
+		<div class="absolute inset-0 z-20">
+			<div id="foglayer_01" class="fog hidden lg:flex">
+				<div class="image01"></div>
+				<div class="image02"></div>
+			</div>
+			<div id="foglayer_02" class="fog hidden lg:flex">
+				<div class="image01"></div>
+				<div class="image02"></div>
+			</div>
+			<div id="foglayer_03" class="fog hidden lg:flex">
+				<div class="image01"></div>
+				<div class="image02"></div>
+			</div>
 		</div>
 		<div class="moon"></div>
 		<section
