@@ -91,11 +91,11 @@ import Layout from "../layouts/Layout.astro";
 
 <div
 	id="infoModalInicial"
-	class="fixed inset-0 modal flex items-center justify-center"
+	class="fixed inset-0 modal flex items-center justify-center animate-fade-in-up animate-duration-1000"
 >
 	<div class="absolute inset-0 bg-black opacity-50"></div>
 	<div
-		class="relative bg-trickle-purple object-green-glow rounded-lg p-8 max-w-lg w-full m-4 animate-fade-in-up text-white"
+		class="relative bg-trickle-purple object-green-glow rounded-lg p-8 max-w-lg w-full m-4 text-white"
 	>
 		<h2 class="text-5xl fuente-handwritte font-bold">Aconsejamos</h2>
 		<h3 class="text-xl fuente-handwritte font-bold pt-4 tracking-widest">
@@ -109,7 +109,7 @@ import Layout from "../layouts/Layout.astro";
 		</h3>
 		<button
 			onclick="closeModal();"
-			class="text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-shake"
+			class="text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
 			>Cerrar</button
 		>
 	</div>
