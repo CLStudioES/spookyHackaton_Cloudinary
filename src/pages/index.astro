@@ -93,27 +93,38 @@ import Layout from "../layouts/Layout.astro";
 	id="infoModalInicial"
 	class="fixed inset-0 modal flex items-center justify-center animate-fade-in-up animate-duration-1000"
 >
-	<div class="absolute inset-0 bg-black opacity-50"></div>
+	<div class="absolute inset-0"></div>
 	<div
-		class="relative bg-trickle-purple object-green-glow rounded-lg p-8 max-w-lg w-full m-4 text-white"
+		class="relative rounded-lg p-12 max-w-lg w-full m-4 text-white bg-cover bg-center"
+		style="background-image: url('/img/ui/grave_texture_2.png');"
 	>
-		<h2 class="text-5xl fuente-handwritte font-bold">Aconsejamos</h2>
-		<h3 class="text-xl fuente-handwritte font-bold pt-4 tracking-widest">
-			Ajustar en el botón de la parte inferior izquierda el modo de
-			pantalla completa para difrutar al 100% de la interfaz. También se
-			recomienda jugar en un dispositivo con un aspecto de 16:9 y una
-			resolución FullHD o superior.
-		</h3>
-		<h3 class="text-xl fuente-handwritte font-bold pt-4 tracking-widest">
-			Difruta de la experiencia
-		</h3>
-		<button
-			onclick="closeModal();"
-			class="text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
-			>Cerrar</button
-		>
+		<div class="relative z-10 rounded-lg">
+			<h2 class="text-5xl fuente-handwritte font-bold mb-4">
+				Aconsejamos
+			</h2>
+			<h3
+				class="text-2xl fuente-handwritte font-bold tracking-widest pt-2"
+			>
+				Ajustar en el botón de la parte inferior izquierda el modo de
+				pantalla completa para difrutar al 100% de la interfaz. También
+				se recomienda jugar en un dispositivo con un aspecto de 16:9 y
+				una resolución FullHD o superior.
+			</h3>
+			<h3
+				class="text-xl fuente-handwritte font-bold pt-4 tracking-widest"
+			>
+				Difruta de la experiencia
+			</h3>
+			<button
+				onclick="closeModal();"
+				class="text-xl fuente-handwritte font-bold mt-6 py-2 text-white rounded hover:bg-gray-200 hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
+			>
+				Cerrar
+			</button>
+		</div>
 	</div>
 </div>
+
 <style>
 	.modal {
 		z-index: 200;

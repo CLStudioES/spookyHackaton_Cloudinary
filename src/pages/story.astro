@@ -9,7 +9,7 @@ const initialStoryId = storyList[0].id;
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Interactive Story</title>
+        <title>ALmas en juego</title>
     </head>
     <body>
         <div id="story-container">
@@ -33,7 +33,7 @@ const initialStoryId = storyList[0].id;
 
                 if (story) {
                     storyContainer.innerHTML = `
-                        <h2>${story.personaje}</h2>
+                        <h2>${story.titulo}</h2>
                         <p>${story.texto}</p>
                     `;
 
@@ -55,7 +55,7 @@ const initialStoryId = storyList[0].id;
                         }
                     }
                 } else {
-                    storyContainer.innerHTML = "<p>Story not found</p>";
+                    storyContainer.innerHTML = "<p>Historia no encontrada</p>";
                     buttonContainer.innerHTML = "";
                 }
             }
