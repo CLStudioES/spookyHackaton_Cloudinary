@@ -1,0 +1,102 @@
+{
+    "stories": [
+        {
+            "id": "1",
+            "next": "2",
+            "personaje": "Narrador",
+            "texto": "Este es el numero 1",
+            "label_button1": "Opción a",
+            "label_button2": "Opción b",
+            "label_button3": "Opción c",
+            "label_button4": "Opción d",
+            "goto_button1": "none",
+            "goto_button2": "2b",
+            "goto_button3": "2c",
+            "goto_button4": "2d"
+        },
+        {
+            "id": "2c",
+            "next": "none",
+            "personaje": "Personaje",
+            "texto": "Este es el numero 2c",
+            "label_button1": "Opción a",
+            "label_button2": "Opción b",
+            "label_button3": "Opción c",
+            "label_button4": "Opción d",
+            "goto_button1": "3a",
+            "goto_button2": "3b",
+            "goto_button3": "3c",
+            "goto_button4": "3d"
+        },
+        {
+            "id": "2b",
+            "goto": "none",
+            "personaje": "Personaje",
+            "texto": "Este es el numero 2b",
+            "label_button1": "Opción a",
+            "label_button2": "Opción b",
+            "label_button3": "Opción c",
+            "label_button4": "Opción d",
+            "goto_button1": "none",
+            "goto_button2": "none",
+            "goto_button3": "none",
+            "goto_button4": "none"
+        },
+        {
+            "id": "3a",
+            "goto": "none",
+            "personaje": "Personaje",
+            "texto": "Este es el numero 3a",
+            "label_button1": "Opción a",
+            "label_button2": "Opción b",
+            "label_button3": "Opción c",
+            "label_button4": "Opción d",
+            "goto_button1": "none",
+            "goto_button2": "none",
+            "goto_button3": "none",
+            "goto_button4": "none"
+        },
+        {
+            "id": "3b",
+            "goto": "none",
+            "personaje": "Personaje",
+            "texto": "Este es el numero 3b",
+            "label_button1": "Opción a",
+            "label_button2": "Opción b",
+            "label_button3": "Opción c",
+            "label_button4": "Opción d",
+            "goto_button1": "none",
+            "goto_button2": "none",
+            "goto_button3": "none",
+            "goto_button4": "none"
+        },
+        {
+            "id": "3c",
+            "goto": "none",
+            "personaje": "Personaje",
+            "texto": "Este es el numero 3c",
+            "label_button1": "Opción a",
+            "label_button2": "Opción b",
+            "label_button3": "Opción c",
+            "label_button4": "Opción d",
+            "goto_button1": "none",
+            "goto_button2": "none",
+            "goto_button3": "none",
+            "goto_button4": "none"
+        },
+        {
+            "id": "3d",
+            "goto": "none",
+            "personaje": "Personaje",
+            "texto": "Este es el numero 3d",
+            "label_button1": "Opción a",
+            "label_button2": "Opción b",
+            "label_button3": "Opción c",
+            "label_button4": "Opción d",
+            "goto_button1": "none",
+            "goto_button2": "none",
+            "goto_button3": "none",
+            "goto_button4": "none"
+        }
+    ]
+}
