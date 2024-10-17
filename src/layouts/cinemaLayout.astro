@@ -1,0 +1,103 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import FloatingButton from "../components/floatingButton.astro";
+
+import "@fontsource/caveat-brush";
+import "@fontsource/permanent-marker";
+import "@fontsource/creepster";
+import "@fontsource-variable/urbanist";
+import "@fontsource-variable/dancing-script";
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta
+			property="og:url"
+			content="https://spooky-hackaton-cloudinary.vercel.app/"
+		/>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Spooky Hackaton" />
+		<meta
+			property="og:description"
+			content="Spooky proyect for Cloudinary Hackaton by CLStudio"
+		/>
+		<meta property="og:image" content="" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:domain"
+			content="spooky-hackaton-cloudinary.vercel.app"
+		/>
+		<meta
+			property="twitter:url"
+			content="https://spooky-hackaton-cloudinary.vercel.app/"
+		/>
+		<meta name="twitter:title" content="Spooky Hackaton" />
+		<meta
+			name="twitter:description"
+			content="Spooky proyect for Cloudinary Hackaton by CLStudio"
+		/>
+		<meta name="twitter:image" content="" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body>
+		<FloatingButton />
+		<slot />
+		<div class="top-bar"></div>
+		<div class="bottom-bar"></div>
+	</body>
+</html>
+<style is:global>
+	html {
+		font-family: system-ui, sans-serif;
+		overflow-x: hidden;
+	}
+	.fuente-caveat {
+		font-family: "Caveat Brush", cursive;
+	}
+	.fuente-permanent {
+		font-family: "Permanent Marker", cursive;
+	}
+	.fuente-creepster {
+		font-family: "Creepster", system-ui;
+	}
+	.fuente-urbanist {
+		font-family: "Urbanist Variable", sans-serif;
+	}
+	.fuente-handwritte {
+		font-family: "Dancing Script Variable", cursive;
+	}
+	.top-bar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 200px; /* Adjust the height as needed */
+		background-color: black;
+		z-index: 1;
+	}
+
+	.bottom-bar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 200px; /* Adjust the height as needed */
+		background-color: black;
+		z-index: 1;
+	}
+
+	.content {
+		padding: 70px 20px; /* Adjust the padding to create space for the bars */
+	}
+</style>

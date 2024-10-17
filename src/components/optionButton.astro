@@ -1,0 +1,20 @@
+---
+import "@fontsource-variable/dancing-script";
+
+const { id, label, onClick } = Astro.props;
+---
+
+<button
+    id={id}
+    class="px-4 py-3 border border-black rounded-xl fuente-urbanist text-xl tracking-wider font-normal hover:scale-105 transition-all duration-500"
+    >{label}</button
+>
+<style>
+    .fuente-handwritte {
+        font-family: "Dancing Script Variable", cursive;
+    }
+</style>
+
+<script define:vars={{ id, onClick }}>
+    document.getElementById(id).addEventListener("click", onClick);
+</script>
