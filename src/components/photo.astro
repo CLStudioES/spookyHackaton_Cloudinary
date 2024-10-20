@@ -1,0 +1,12 @@
+---
+import { getCldImageUrl } from "astro-cloudinary/helpers";
+
+const { searchParams } = Astro.url;
+const id = searchParams.get("id");
+
+if (id == null) return Astro.redirect("/");
+
+const url = getCldImageUrl({ src: id });
+---
+
+<img src={url} />
