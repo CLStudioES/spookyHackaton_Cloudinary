@@ -9,40 +9,74 @@ const initialStoryId = storyList[0].id;
 ---
 
 <CinemaLayout title="Spooky Hackaton-Tu historia">
-    <main class="flex flex-col items-center justify-center min-h-screen p-4">
-        <div class="max-w-7xl w-full text-center">
-            {
-                storyList.map((story) => (
-                    <div
-                        id={`story-${story.id}`}
-                        class="mb-6"
-                        style="display: none;"
-                    >
-                        <StoryContainer
-                            titulo={story.titulo}
-                            texto={story.texto}
-                        />
-                    </div>
-                ))
-            }
-            <div
-                id="button-container"
-                class="flex flex-wrap justify-center gap-4"
-            >
+    <div class="relative min-h-screen">
+        <!-- Background GIF container -->
+        <div class="absolute inset-0 z-0">
+            <img
+                src="/animations/ghost_2.gif"
+                alt="Ghost animation"
+                class="w-full h-full object-cover"
+                id="ghostAnimation"
+            />
+        </div>
+        <!-- Content container -->
+        <main
+            class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4"
+        >
+            <div class="max-w-7xl w-full text-center">
                 {
-                    [1, 2, 3, 4].map((i) => (
-                        <OptionButton
-                            id={`button-${i}`}
-                            label=""
-                            onClick=""
-                            style="display: none;"
-                        />
+                    storyList.map((story) => (
+                        <div id={`story-${story.id}`} class="mb-6 hidden">
+                            <StoryContainer
+                                titulo={story.titulo}
+                                texto={story.texto}
+                            />
+                        </div>
                     ))
                 }
+                <div
+                    id="button-container"
+                    class="flex flex-wrap justify-center gap-4"
+                >
+                    {
+                        [1, 2, 3, 4].map((i) => (
+                            <OptionButton
+                                id={`button-${i}`}
+                                label=""
+                                onClick=""
+                                class="hidden"
+                            />
+                        ))
+                    }
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </CinemaLayout>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const img = document.getElementById("ghostAnimation");
+        if (img) {
+            fetch(img.src)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    img.src = url;
+                    img.addEventListener("load", function () {
+                        setTimeout(() => {
+                            const canvas = document.createElement("canvas");
+                            canvas.width = img.naturalWidth;
+                            canvas.height = img.naturalHeight;
+                            canvas.getContext("2d").drawImage(img, 0, 0);
+                            img.src = canvas.toDataURL();
+                            URL.revokeObjectURL(url);
+                        }, 3000); // Adjust this timeout based on your GIF duration
+                    });
+                });
+        }
+    });
+</script>
 
 <script define:vars={{ storyList, initialStoryId }}>
     function displayStory(id) {

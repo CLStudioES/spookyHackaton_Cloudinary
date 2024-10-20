@@ -10,12 +10,28 @@ import Layout from "../layouts/Layout.astro";
 		} else {
 			console.error("Element with ID 'infoModalInicial' not found");
 		}
+		playGif();
 	}
 </script>
 
 <Layout title="Spooky Hackaton">
 	<main class="lg:overflow-hidden">
 		<div class="relative h-screen w-screen">
+			<!--Animaciones -->
+			<div id="animatorContainer" class="absolute inset-0 z-40">
+				<img
+					id="ghostAnimation"
+					alt="Ghost Animation 1"
+					class="w-full h-full object-cover"
+				/>
+			</div>
+			<div id="animatorContainer2" class="absolute inset-0 z-40">
+				<img
+					id="ghostAnimation2"
+					alt="Ghost Animation 2"
+					class="w-full h-full object-cover"
+				/>
+			</div>
 			<!-- Bottom layer -->
 			<div class="absolute inset-0 z-0">
 				<div class="moon"></div>
@@ -115,7 +131,7 @@ import Layout from "../layouts/Layout.astro";
 				Difruta de la experiencia
 			</h3>
 			<button
-				onclick="closeModal();"
+				onclick="closeModal(); playGif();"
 				class="text-xl fuente-handwritte font-bold mt-6 py-2 text-white rounded hover:bg-gray-200 hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
 			>
 				Cerrar
@@ -123,6 +139,70 @@ import Layout from "../layouts/Layout.astro";
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	const animationSrc_1 = "/animations/castle_ghost.gif";
+	const animationSrc_2 = "/animations/castle_ghost_2.gif";
+	const gif = document.getElementById("ghostAnimation");
+	const gif2 = document.getElementById("ghostAnimation2");
+	const animatorContainer = document.getElementById("animatorContainer");
+	const animatorContainer2 = document.getElementById("animatorContainer2");
+
+	function playGif() {
+		animatorContainer.classList.remove("hidden");
+		animatorContainer2.classList.add("hidden");
+		gif.src = animationSrc_1;
+		setTimeout(playGif2, 10000);
+	}
+
+	function playGif2() {
+		animatorContainer.classList.add("hidden");
+		animatorContainer2.classList.remove("hidden");
+		gif2.src = animationSrc_2;
+	}
+
+	document.addEventListener("DOMContentLoaded", function () {
+		const img = document.getElementById("ghostAnimation");
+		if (img) {
+			fetch(img.src)
+				.then((response) => response.blob())
+				.then((blob) => {
+					const url = URL.createObjectURL(blob);
+					img.src = url;
+					img.addEventListener("load", function () {
+						setTimeout(() => {
+							const canvas = document.createElement("canvas");
+							canvas.width = img.naturalWidth;
+							canvas.height = img.naturalHeight;
+							canvas.getContext("2d").drawImage(img, 0, 0);
+							img.src = canvas.toDataURL();
+							URL.revokeObjectURL(url);
+						}, 3800); // castle_ghost= 3800 castle_ghost_2= 3350
+					});
+				});
+		}
+	});
+	document.addEventListener("DOMContentLoaded", function () {
+		const img = document.getElementById("ghostAnimation2");
+		if (img) {
+			fetch(img.src)
+				.then((response) => response.blob())
+				.then((blob) => {
+					const url = URL.createObjectURL(blob);
+					img.src = url;
+					img.addEventListener("load", function () {
+						setTimeout(() => {
+							const canvas = document.createElement("canvas");
+							canvas.width = img.naturalWidth;
+							canvas.height = img.naturalHeight;
+							canvas.getContext("2d").drawImage(img, 0, 0);
+							img.src = canvas.toDataURL();
+							URL.revokeObjectURL(url);
+						}, 3350); // castle_ghost= 3800 castle_ghost_2= 3350
+					});
+				});
+		}
+	});
+</script>
 
 <style>
 	.modal {
