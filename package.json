@@ -20,6 +20,7 @@
     "@midudev/tailwind-animations": "^0.1.0",
     "astro": "^4.16.0",
     "astro-cloudinary": "^1.1.2",
-    "tailwindcss": "^3.4.13"
+    "tailwindcss": "^3.4.13",
+    "two-up-element": "^1.0.1"
   }
 }

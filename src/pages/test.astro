@@ -1,5 +1,24 @@
 ---
-import Photo from "../components/photo.astro";
----
+// test.astro
+const params = Astro.url.searchParams;
 
-<Photo />
+// Get individual parameters
+const nombre = params.get("nombre") || "";
+const fechaNacimiento = params.get("fechaNacimiento") || "";
+const palabras = params.get("palabras") || "";
+const secureUrl = params.get("secureUrl") || "";
+const deadUrl = params.get("deadUrl") || "";
+const normalUrl = params.get("normalUrl") || "";
+const hellUrl = params.get("hellUrl") || "";
+const heavenUrl = params.get("heavenUrl") || "";
+
+// Log the parameters to the server console
+console.log("Received parameters:");
+console.log("nombre:", nombre);
+console.log("fechaNacimiento:", fechaNacimiento);
+console.log("palabras:", palabras);
+console.log("deadUrl:", deadUrl);
+console.log("normalUrl:", normalUrl);
+console.log("hellUrl:", hellUrl);
+console.log("heavenUrl:", heavenUrl);
+---
