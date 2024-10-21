@@ -25,10 +25,17 @@ import Layout from "../layouts/Layout.astro";
 					class="w-full h-full object-cover"
 				/>
 			</div>
-			<div id="animatorContainer2" class="absolute inset-0 z-40">
+			<div id="animatorContainer2" class="absolute inset-0 z-40 hidden">
 				<img
 					id="ghostAnimation2"
 					alt="Ghost Animation 2"
+					class="w-full h-full object-cover"
+				/>
+			</div>
+			<div id="ghostAnimation3" class="absolute inset-0 z-50 hidden">
+				<img
+					alt="Ghost Animation 3"
+					src="/animations/transition_ghost.gif"
 					class="w-full h-full object-cover"
 				/>
 			</div>
@@ -72,7 +79,7 @@ import Layout from "../layouts/Layout.astro";
 			>
 			</div>
 			<!--Front layer -->
-			<div class="absolute inset-0 z-50">
+			<div id="titleContent" class="absolute inset-0 z-50">
 				<section
 					id="title"
 					class="flex flex-col items-center justify-center h-screen animate-bouncing animate-iteration-count-infinite animate-duration-1000"
@@ -87,9 +94,10 @@ import Layout from "../layouts/Layout.astro";
 					>
 						- Design your adventure -
 					</h2>
-					<a
+					<button
 						id="startButton"
-						href="/personaje"
+						onclick="changePage();"
+						;
 						class="relative px-14 py-5 mt-8 lg:mt-24 text-black rounded-xl hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite fuente-urbanist text-xl lg:text-2xl font-bold tracking-widest"
 					>
 						<div
@@ -97,7 +105,7 @@ import Layout from "../layouts/Layout.astro";
 						>
 						</div>
 						<span class="relative graven-text">Empezar </span>
-					</a>
+					</button>
 				</section>
 			</div>
 		</div>
@@ -132,7 +140,7 @@ import Layout from "../layouts/Layout.astro";
 			</h3>
 			<button
 				onclick="closeModal(); playGif();"
-				class="text-xl fuente-handwritte font-bold mt-6 py-2 text-white rounded hover:bg-gray-200 hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
+				class="text-xl animate-duration-slower fuente-handwritte font-bold mt-6 py-2 text-white rounded hover:bg-gray-200 hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
 			>
 				Cerrar
 			</button>
@@ -146,6 +154,24 @@ import Layout from "../layouts/Layout.astro";
 	const gif2 = document.getElementById("ghostAnimation2");
 	const animatorContainer = document.getElementById("animatorContainer");
 	const animatorContainer2 = document.getElementById("animatorContainer2");
+
+	function changePage() {
+		const gif = document.getElementById("ghostAnimation3");
+		const title = document.getElementById("titleContent");
+		title.classList.add(
+			"animate-duration-slower",
+			"animate-fade-out-down",
+			"transition-all",
+			"animate-duration-1000",
+			"duration-1000",
+		);
+		gif.classList.remove("hidden");
+		setTimeout(changePageStep2, 2000);
+	}
+
+	function changePageStep2() {
+		window.location.href = "/personaje";
+	}
 
 	function playGif() {
 		animatorContainer.classList.remove("hidden");
