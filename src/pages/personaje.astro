@@ -212,6 +212,7 @@ import { CldUploadWidget } from "astro-cloudinary";
         ) => {
             const publicId = e.detail.info.public_id;
             secure_url = e.detail.info.secure_url;
+            console.log(e.detail.info.secure_url);
 
             normal_url = getCldImageUrl({
                 src: secure_url,
@@ -295,7 +296,7 @@ import { CldUploadWidget } from "astro-cloudinary";
                     aspectUrl: aspect_url,
                     normalUrl: normal_url,
                 });
-
+                console.log(normal_url);
                 // Navigate to the new page with the parameters
                 window.location.href = `/historia?${params.toString()}`;
             });

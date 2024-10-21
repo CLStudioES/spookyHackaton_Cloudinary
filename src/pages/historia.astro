@@ -1,10 +1,13 @@
 ---
+import { getCldImageUrl } from "astro-cloudinary/helpers";
+
 import storyData from "../data/story.json";
 import CinemaLayout from "../layouts/cinemaLayout.astro";
 import StoryContainer from "../components/storyContainer.astro";
 import OptionButton from "../components/optionButton.astro";
 import ImageContainer from "../components/imageContainer.astro";
 import VozContainer from "../components/vozContainer.astro";
+import BackgroundContainer from "../components/backgroundContainer.astro";
 
 const params = Astro.url.searchParams;
 
@@ -20,28 +23,28 @@ const normalUrl = params.get("normalUrl") || "";
 
 <CinemaLayout title="Spooky Hackaton-Tu historia">
     <div class="relative min-h-screen">
-        <img
-            src="/img/ui/backgrounds/composition_historia/room_1.png"
-            alt="Room background"
-            class="absolute bg-cover bg-center bg-no-repeat w-full h-screen"
-        />
+        <div class="absolute inset-0 z-0">
+            <BackgroundContainer />
+        </div>
         <main
-            class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4"
+            class="relative z-50 flex flex-col items-center justify-center min-h-screen p-4"
         >
             <div class="max-w-7xl w-full text-center">
                 {
                     storyList.map((story) => (
                         <div id={`story-${story.id}`} class="mb-6 hidden">
-                            <div class="bg-white rounded-2xl py-10 bg-opacity-75 sm:bg-opacity-20 sm:backdrop-filter sm:backdrop-blur-lg 
-           border border-black border-opacity-20 shadow-lg">
-                            <ImageContainer
-                                prompt={story.imagePrompt}
-                                Url={normalUrl}
-                            />
-                            <StoryContainer
-                                titulo={story.titulo}
-                                texto={story.texto}
-                            />
+                            <div
+                                class="bg-white rounded-2xl py-10 bg-opacity-75 sm:bg-opacity-20 sm:backdrop-filter sm:backdrop-blur-lg 
+                                border border-black border-opacity-20 shadow-lg"
+                            >
+                                <ImageContainer
+                                    prompt={story.imagePrompt}
+                                    Url={normalUrl}
+                                />
+                                <StoryContainer
+                                    titulo={story.titulo}
+                                    texto={story.texto}
+                                />
                             </div>
                             {story.comentario && story.personaje && (
                                 <VozContainer
@@ -61,8 +64,8 @@ const normalUrl = params.get("normalUrl") || "";
                             <OptionButton
                                 id={`button-${i}`}
                                 label=""
-                                onClick=""
-                                class="hidden"
+                                data-button-index={i}
+                                class="hidden option-button"
                             />
                         ))
                     }

@@ -1,0 +1,51 @@
+<div class="relative min-h-screen">
+    <img
+        id="backgroundOriginal"
+        src=""
+        alt="Room background"
+        class="absolute bg-cover bg-center bg-no-repeat w-full h-screen z-0"
+    />
+</div>
+
+<script>
+    import { getCldImageUrl } from "astro-cloudinary/helpers";
+    import "two-up-element";
+
+    let prompts = [
+        "Spooky forest",
+        "Haunted house",
+        "Misty graveyard",
+        "Dark castle",
+    ];
+
+    let normal_url =
+        "https://res.cloudinary.com/dcsf9dpip/image/upload/v1729529205/cl-images/room.png";
+
+    // Function to get a random item from an array
+    function getRandomItem(arr: string[]): string {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // Select a random prompt
+    const randomPrompt = getRandomItem(prompts);
+
+    let new_url = getCldImageUrl({
+        src: normal_url,
+        crop: "fill",
+        gravity: "center",
+        defaultImage: normal_url,
+        // replaceBackground: { prompt: randomPrompt },
+        fillBackground: { prompt: randomPrompt },
+        replaceBackground: { prompt: randomPrompt },
+    });
+
+    // Use the new_url to set the src of the background image
+    const backgroundOriginal = document.getElementById(
+        "backgroundOriginal",
+    ) as HTMLImageElement;
+    if (backgroundOriginal) {
+        backgroundOriginal.src = new_url;
+    } else {
+        console.error("Background image element not found or is not an image");
+    }
+</script>
