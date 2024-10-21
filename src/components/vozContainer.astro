@@ -1,0 +1,26 @@
+---
+interface Props {
+    personaje: string;
+    comentario: string;
+}
+const { personaje, comentario } = Astro.props;
+---
+
+<div class="fixed inset-x-0 bottom-0 flex justify-center pb-8">
+    <article class="max-w-2xl w-full text-white p-6 rounded-lg shadow-lg">
+        <!-- Your article content goes here -->
+        <h2 class="text-4xl font-bold mb-4 fuente-handwritte">{personaje}</h2>
+        <p class="fuente-urbanist tracking-wider font-extralight">
+            {comentario}
+        </p>
+    </article>
+</div>
+
+<style>
+    .fuente-urbanist {
+        font-family: "Urbanist Variable", sans-serif;
+    }
+    .fuente-handwritte {
+        font-family: "Dancing Script Variable", cursive;
+    }
+</style>

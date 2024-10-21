@@ -1,19 +1,19 @@
 ---
 import CinemaLayout from "../layouts/cinemaLayout.astro";
-import ImageContainer from "../components/imageContainer.astro";
+import ImageContainerHorizontal from "../components/imageContainerHorizontal.astro";
 import StoryContainer from "../components/storyContainer.astro";
 
-const aspectUrl = Astro.url.searchParams.get("aspectUrl");
+const normalUrl = Astro.url.searchParams.get("normalUrl");
 const prompt = "El cielo con ángeles";
 ---
 
 <CinemaLayout title="Spooky Hackaton-Perdiste lo más importante">
     <div class="relative min-h-screen">
         <main
-            class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 w-screen"
+            class="relative z-50 flex flex-col items-center justify-center min-h-screen p-4 w-screen"
         >
             <div class="max-w-7xl w-full text-center">
-                <ImageContainer prompt={prompt} aspectUrl={aspectUrl} />
+                <ImageContainerHorizontal prompt={prompt} Url={normalUrl} />
                 <StoryContainer
                     titulo={"Ganador sin haber vencido"}
                     texto="Jugaste y no perdiste pero tampoco ganaste. Agradécelo cada día que pases en el cielo que te imagines."
@@ -26,7 +26,7 @@ const prompt = "El cielo con ángeles";
                 <a
                     href="/gracias"
                     target="_blank"
-                    class="px-4 py-3 border border-black rounded-xl fuente-urbanist text-xl tracking-wider font-normal hover:scale-105 transition-all duration-500"
+                    class="px-4 py-3 border border-black bg-white z-50 rounded-xl fuente-urbanist text-xl tracking-wider font-normal hover:scale-105 transition-all duration-500"
                     >GRACIAS</a
                 >
             </div>

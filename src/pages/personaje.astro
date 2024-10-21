@@ -7,6 +7,13 @@ import { CldUploadWidget } from "astro-cloudinary";
     <main
         class="hidden lg:flex items-center justify-center h-screen w-screen overflow-hidden animate-fade-in animate-duration-slower"
     >
+        <div id="animatorContainer" class="absolute inset-0 z-40 hidden">
+            <img
+                id="ghostAnimation"
+                alt="Ghost Animation 1"
+                class="w-full h-full object-cover"
+            />
+        </div>
         <div class="relative h-screen w-screen">
             <!-- Bottom layer -->
             <div class="absolute inset-0 z-0">
@@ -250,10 +257,6 @@ import { CldUploadWidget } from "astro-cloudinary";
                 grayscale: true,
             });
 
-            console.log(dead_url);
-            console.log(heaven_url);
-            console.log(hell_url);
-            // Get the image element
             const graveImageOriginal = document.getElementById(
                 "graveImageOriginal",
             ) as HTMLImageElement;
@@ -290,6 +293,7 @@ import { CldUploadWidget } from "astro-cloudinary";
                     fechaNacimiento: fechaNacimiento,
                     palabras: palabras,
                     aspectUrl: aspect_url,
+                    normalUrl: normal_url,
                 });
 
                 // Navigate to the new page with the parameters
@@ -297,6 +301,23 @@ import { CldUploadWidget } from "astro-cloudinary";
             });
         }
     });
+</script>
+<script type="text/javascript">
+    const animationSrc_1 = "/animations/tomb_ghost.gif";
+    const gif = document.getElementById("ghostAnimation");
+    const animatorContainer = document.getElementById("animatorContainer");
+    gif.src = animationSrc_1;
+
+    function playGif() {
+        animatorContainer.classList.remove("hidden");
+        setTimeout(pauseGif, 3200);
+    }
+    function pauseGif() {
+        animatorContainer.classList.add("hidden");
+        setTimeout(playGif, 10000);
+    }
+
+    playGif();
 </script>
 
 <style>

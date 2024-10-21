@@ -4,6 +4,7 @@ import CinemaLayout from "../layouts/cinemaLayout.astro";
 import StoryContainer from "../components/storyContainer.astro";
 import OptionButton from "../components/optionButton.astro";
 import ImageContainer from "../components/imageContainer.astro";
+import VozContainer from "../components/vozContainer.astro";
 
 const params = Astro.url.searchParams;
 
@@ -14,11 +15,16 @@ const nombre = params.get("nombre") || "";
 const fechaNacimiento = params.get("fechaNacimiento") || "";
 const palabras = params.get("palabras") || "";
 const aspectUrl = params.get("aspectUrl") || "";
+const normalUrl = params.get("normalUrl") || "";
 ---
 
 <CinemaLayout title="Spooky Hackaton-Tu historia">
     <div class="relative min-h-screen">
-        <!-- Content container -->
+        <img
+            src="/img/ui/backgrounds/composition_historia/room_1.png"
+            alt="Room background"
+            class="absolute bg-cover bg-center bg-no-repeat w-full h-screen"
+        />
         <main
             class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4"
         >
@@ -26,14 +32,23 @@ const aspectUrl = params.get("aspectUrl") || "";
                 {
                     storyList.map((story) => (
                         <div id={`story-${story.id}`} class="mb-6 hidden">
+                            <div class="bg-white rounded-2xl py-10 bg-opacity-75 sm:bg-opacity-20 sm:backdrop-filter sm:backdrop-blur-lg 
+           border border-black border-opacity-20 shadow-lg">
                             <ImageContainer
                                 prompt={story.imagePrompt}
-                                aspectUrl={aspectUrl}
+                                Url={normalUrl}
                             />
                             <StoryContainer
                                 titulo={story.titulo}
                                 texto={story.texto}
                             />
+                            </div>
+                            {story.comentario && story.personaje && (
+                                <VozContainer
+                                    comentario={story.comentario}
+                                    personaje={story.personaje}
+                                />
+                            )}
                         </div>
                     ))
                 }
@@ -57,7 +72,7 @@ const aspectUrl = params.get("aspectUrl") || "";
     </div>
 </CinemaLayout>
 
-<script define:vars={{ storyList, initialStoryId, aspectUrl }}>
+<script define:vars={{ storyList, initialStoryId, normalUrl }}>
     function displayStory(id) {
         const story = storyList.find((s) => s.id === id);
         if (story) {
@@ -84,9 +99,8 @@ const aspectUrl = params.get("aspectUrl") || "";
                 ) {
                     button.textContent = story[labelKey];
                     button.onclick = () => {
-                        // Function to create URL with aspectUrl parameter
                         const createUrl = (path) =>
-                            `${path}?aspectUrl=${encodeURIComponent(aspectUrl)}`;
+                            `${path}?normalUrl=${encodeURIComponent(normalUrl)}`;
 
                         // Check for special endings
                         if (id === "15c") {
