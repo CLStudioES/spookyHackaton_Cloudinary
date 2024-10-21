@@ -1,0 +1,51 @@
+---
+import CinemaLayout from "../layouts/cinemaLayout.astro";
+---
+
+<CinemaLayout title="Spooky Hackaton-Gracias">
+    <main class="h-full w-full">
+        <div class="w-full h-[1050px]">
+            <img id="gracias_1" class="z-50 w-full h-full" />
+            <img id="gracias_2" class="z-50 w-full h-full hidden" />
+        </div>
+    </main>
+</CinemaLayout>
+
+<script type="text/javascript">
+    const animationSrc_1 = "/animations/gracias_1.gif";
+    const animationSrc_2 = "/animations/gracias_2.gif";
+    const gif = document.getElementById("gracias_1");
+    const gif2 = document.getElementById("gracias_2");
+
+    gif.src = animationSrc_1;
+
+    function loopGif() {
+        gif.classList.add("hidden");
+        gif2.classList.remove("hidden");
+        gif2.src = animationSrc_2;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const img = document.getElementById("gracias_1");
+        if (img) {
+            fetch(img.src)
+                .then((response) => response.blob())
+                .then((blob) => {
+                    const url = URL.createObjectURL(blob);
+                    img.src = url;
+                    img.addEventListener("load", function () {
+                        setTimeout(() => {
+                            const canvas = document.createElement("canvas");
+                            canvas.width = img.naturalWidth;
+                            canvas.height = img.naturalHeight;
+                            canvas.getContext("2d").drawImage(img, 0, 0);
+                            img.src = canvas.toDataURL();
+                            URL.revokeObjectURL(url);
+                        }, 3800); //
+                    });
+                });
+        }
+    });
+
+    setTimeout(loopGif, 3800);
+</script>

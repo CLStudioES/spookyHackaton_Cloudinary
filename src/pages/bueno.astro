@@ -1,0 +1,45 @@
+---
+import CinemaLayout from "../layouts/cinemaLayout.astro";
+import ImageContainer from "../components/imageContainer.astro";
+import StoryContainer from "../components/storyContainer.astro";
+
+const aspectUrl = Astro.url.searchParams.get("aspectUrl");
+const prompt = "naturaleza con animales y luz detrás";
+---
+
+<CinemaLayout title="Spooky Hackaton-Levántate y anda">
+    <div class="relative min-h-screen">
+        <main
+            class="relative z-10 flex flex-col items-center justify-center min-h-screen p-4 w-screen"
+        >
+            <div class="max-w-7xl w-full text-center">
+                <ImageContainer prompt={prompt} aspectUrl={aspectUrl} />
+                <StoryContainer
+                    titulo={"Levántate y anda"}
+                    texto="Enhorabuena, has conseguido vencer al Guía y te has ganado de nuevo un lugar entre los vivos, aprovéchalo esta vez."
+                />
+            </div>
+            <div
+                id="button-container"
+                class="flex flex-wrap justify-center gap-4"
+            >
+                <a
+                    href="/gracias"
+                    target="_blank"
+                    class="px-4 py-3 border border-black rounded-xl fuente-urbanist text-xl tracking-wider font-normal hover:scale-105 transition-all duration-500"
+                    >GRACIAS</a
+                >
+            </div>
+        </main>
+    </div>
+</CinemaLayout>
+<style>
+    .fuente-handwritte {
+        font-family: "Dancing Script Variable", cursive;
+    }
+
+    #button-container {
+        display: flex;
+        margin-top: 20px;
+    }
+</style>

@@ -57,7 +57,7 @@ const aspectUrl = params.get("aspectUrl") || "";
     </div>
 </CinemaLayout>
 
-<script define:vars={{ storyList, initialStoryId, aspectUrl }}>
+<script define:vars={{ storyList, initialStoryId }}>
     function displayStory(id) {
         const story = storyList.find((s) => s.id === id);
         if (story) {
@@ -83,26 +83,7 @@ const aspectUrl = params.get("aspectUrl") || "";
                     story[gotoKey] !== "none"
                 ) {
                     button.textContent = story[labelKey];
-                    button.onclick = () => {
-                        // Function to create URL with aspectUrl parameter
-                        const createUrl = (path) =>
-                            `${path}?aspectUrl=${encodeURIComponent(aspectUrl)}`;
-
-                        // Check for special endings
-                        if (id === "15c") {
-                            window.location.href = createUrl("/malo");
-                        } else if (id === "15a") {
-                            window.location.href = createUrl("/bueno");
-                        } else if (id === "15b") {
-                            window.location.href = createUrl("/medio");
-                        } else if (story[gotoKey] === "gracias") {
-                            // Keep the existing "gracias" redirect
-                            window.location.href = createUrl("/gracias");
-                        } else {
-                            // Otherwise, continue with normal story navigation
-                            displayStory(story[gotoKey]);
-                        }
-                    };
+                    button.onclick = () => displayStory(story[gotoKey]);
                     button.style.display = "block";
                 } else {
                     button.style.display = "none";
@@ -116,7 +97,6 @@ const aspectUrl = params.get("aspectUrl") || "";
     // Display the initial story on page load
     displayStory(initialStoryId);
 </script>
-
 <style>
     #button-container {
         display: flex;

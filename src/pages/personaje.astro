@@ -197,6 +197,7 @@ import { CldUploadWidget } from "astro-cloudinary";
     let hell_url = "";
     let heaven_url = "";
     let dead_url = "";
+    let aspect_url = "";
 
     if (widget) {
         widget.addEventListener("clduploadwidget:success", ((
@@ -236,6 +237,14 @@ import { CldUploadWidget } from "astro-cloudinary";
                 replaceBackground: "hell with dead people",
                 width: 300,
                 height: 300,
+                crop: "fill",
+                gravity: "center",
+                grayscale: true,
+            });
+            aspect_url = getCldImageUrl({
+                src: secure_url,
+                replaceBackground: "graveyard background with zombies",
+                aspectRatio: "16:9",
                 crop: "fill",
                 gravity: "center",
                 grayscale: true,
@@ -280,10 +289,7 @@ import { CldUploadWidget } from "astro-cloudinary";
                     nombre: nombre,
                     fechaNacimiento: fechaNacimiento,
                     palabras: palabras,
-                    deadUrl: dead_url,
-                    normalUrl: normal_url,
-                    hellUrl: hell_url,
-                    heavenUrl: heaven_url,
+                    aspectUrl: aspect_url,
                 });
 
                 // Navigate to the new page with the parameters

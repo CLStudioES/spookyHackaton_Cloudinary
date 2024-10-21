@@ -1,0 +1,27 @@
+---
+import { getCldImageUrl } from "astro-cloudinary/helpers";
+
+interface Props {
+    prompt: string;
+    aspectUrl: string;
+}
+const { prompt, aspectUrl } = Astro.props;
+---
+
+<div
+    class="video-container w-[20vw] max-w-[1200px] aspect-video rounded-3xl border-2 border-white shadow-[0_0_10px_rgba(255,255,255,0.5)] flex items-center justify-center overflow-hidden mx-auto"
+>
+    <img
+        id="containerRecuerdo"
+        src={getCldImageUrl({
+            src: aspectUrl,
+            replaceBackground: prompt,
+            aspectRatio: "16:9",
+            crop: "fill",
+            gravity: "center",
+            grayscale: true,
+        })}
+        alt="Imagen del fallecido"
+        class="max-w-full max-h-full object-contain"
+    />
+</div>
