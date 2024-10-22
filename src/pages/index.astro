@@ -3,17 +3,34 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <script is:inline>
+	document.addEventListener("DOMContentLoaded", function () {
+		const closeButton = document.getElementById("closeModalButton");
+
+		if (closeButton) {
+			closeButton.addEventListener("click", function (e) {
+				e.preventDefault(); // Prevent default button action if needed
+				console.log("Close button clicked");
+				closeModal(); // Call your closeModal function
+			});
+		} else {
+			console.error("Button with ID 'closeModal' not found");
+		}
+	});
 	function closeModal() {
 		const infoModalInicial = document.getElementById("infoModalInicial");
 		if (infoModalInicial) {
+			console.log("Closing modal");
 			infoModalInicial.classList.add("hidden");
+			// Or use your custom classes:
+			// infoModalInicial.classList.remove("modal-visible");
+			// infoModalInicial.classList.add("modal-hidden");
 		} else {
 			console.error("Element with ID 'infoModalInicial' not found");
 		}
+		// Call playGif() if needed
 		playGif();
 	}
 </script>
-
 <Layout title="Spooky Hackaton">
 	<main class="lg:overflow-hidden">
 		<div class="relative h-screen w-screen">
@@ -114,39 +131,81 @@ import Layout from "../layouts/Layout.astro";
 
 <div
 	id="infoModalInicial"
-	class="fixed inset-0 modal flex items-center justify-center animate-fade-in-up animate-duration-1000"
+	class="fixed inset-0 modal z-50 flex items-center justify-center animate-fade-in-up animate-duration-1000 p-4"
 >
-	<div class="absolute inset-0"></div>
-	<div
-		class="relative rounded-lg p-12 max-w-lg w-full m-4 text-white bg-cover bg-center"
-		style="background-image: url('/img/ui/grave_texture_2.png');"
-	>
-		<div class="relative z-10 rounded-lg">
-			<h2 class="text-5xl fuente-handwritte font-bold mb-4">
-				Aconsejamos
-			</h2>
-			<h3
-				class="text-2xl fuente-handwritte font-bold tracking-widest pt-2"
+	<div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+	<div class="relative w-[60vw] max-w-[1250px] max-h-[90vh]">
+		<img
+			class="w-full h-auto"
+			src="/img/ui/grave_texture_1.png"
+			alt="Background"
+		/>
+		<div
+			class="absolute inset-0 overflow-auto p-4 sm:p-6 md:p-8 lg:p-12 text-white"
+		>
+			<div
+				class="relative z-10 max-w-[80%] flex flex-col justify-center mt-16 mx-auto"
 			>
-				Ajustar en el botón de la parte inferior izquierda el modo de
-				pantalla completa para difrutar al 100% de la interfaz. También
-				se recomienda jugar en un dispositivo con un aspecto de 16:9 y
-				una resolución FullHD o superior.
-			</h3>
-			<h3
-				class="text-xl fuente-handwritte font-bold pt-4 tracking-widest"
-			>
-				Difruta de la experiencia
-			</h3>
-			<button
-				onclick="closeModal(); playGif();"
-				class="text-xl animate-duration-slower fuente-handwritte font-bold mt-6 py-2 text-white rounded hover:bg-gray-200 hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
-			>
-				Cerrar
-			</button>
+				<h2
+					class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fuente-handwritte font-bold mb-4"
+				>
+					Aconsejamos
+				</h2>
+				<p
+					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+				>
+					1) Utilizar el modo kiosko para una mejor experiencia
+				</p>
+				<p
+					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+				>
+					2) Una resolucion de 1920x1080 con aspecto de 16:9
+				</p>
+				<p
+					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+				>
+					3) Paciencia, usamos Cloudinary y las peticiones de imágenes
+					y subidas fallan algunas veces. Puedes pulsar F5 o recargar
+					la página.
+				</p>
+				<p
+					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+				>
+					4) Jugar la historia varias veces con distintas decisiones.
+				</p>
+				<p
+					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+				>
+					5) Subir las fotos en aspecto 1:1 o verticales con la
+					persona centrada en la imagen y fondo visible.
+				</p>
+				<h2
+					class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fuente-handwritte font-bold my-4"
+				>
+					Agradecimientos
+				</h2>
+				<p
+					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+				>
+					1) Midudev & Cloudinary por la organización del evento.
+				</p>
+				<p
+					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+				>
+					2) Comunidad dev y sus aportaciones constantes.
+				</p>
+
+				<button
+					id="closeModalButton"
+					class="text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
+					>Cerrar</button
+				>
+			</div>
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
 	const animationSrc_1 = "/animations/castle_ghost.gif";
 	const animationSrc_2 = "/animations/castle_ghost_2.gif";
@@ -232,6 +291,6 @@ import Layout from "../layouts/Layout.astro";
 
 <style>
 	.modal {
-		z-index: 200;
+		z-index: 500;
 	}
 </style>
