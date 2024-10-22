@@ -31,26 +31,32 @@ import Layout from "../layouts/Layout.astro";
 	<main class="lg:overflow-hidden">
 		<div
 			id="fullscreenOverlay"
-			class="absolute inset-0 bg-black z-50 hidden"
+			class="absolute inset-0 bg-black z-0 lg:z-50 hidden"
 		>
 		</div>
 		<div class="relative h-screen w-screen">
 			<!--Animaciones -->
-			<div id="animatorContainer" class="absolute inset-0 z-40">
+			<div id="animatorContainer" class="absolute inset-0 z-0 lg:z-40">
 				<img
 					id="ghostAnimation"
 					alt="Ghost Animation 1"
 					class="w-full h-full object-cover"
 				/>
 			</div>
-			<div id="animatorContainer2" class="absolute inset-0 z-40 hidden">
+			<div
+				id="animatorContainer2"
+				class="absolute inset-0 z-0 lg:z-40 hidden"
+			>
 				<img
 					id="ghostAnimation2"
 					alt="Ghost Animation 2"
 					class="w-full h-full object-cover"
 				/>
 			</div>
-			<div id="ghostAnimation3" class="absolute inset-0 z-50 hidden">
+			<div
+				id="ghostAnimation3"
+				class="absolute inset-0 z-0 lg:z-50 hidden"
+			>
 				<img
 					alt="Ghost Animation 3"
 					src="/animations/transition_ghost.gif"
@@ -103,7 +109,7 @@ import Layout from "../layouts/Layout.astro";
 					class="flex flex-col items-center justify-center h-screen animate-bouncing animate-iteration-count-infinite animate-duration-1000"
 				>
 					<h1
-						class="fuente-creepster font-extralight text-7xl lg:text-9xl tracking-widest mx-auto text-trickle-purple text-green-glow"
+						class="fuente-creepster font-extralight text-7xl lg:text-9xl text-center tracking-widest mx-auto text-trickle-purple text-green-glow"
 					>
 						Spooky Hackaton
 					</h1>
@@ -138,9 +144,14 @@ import Layout from "../layouts/Layout.astro";
 
 	<div class="relative w-[60vw] max-w-[1250px] max-h-[90vh]">
 		<img
-			class="w-full h-auto"
+			class="w-full h-auto hidden md:block"
 			src="/img/ui/grave_texture_1.png"
-			alt="Background"
+			alt="Background for medium screens and up"
+		/>
+		<img
+			class="w-auto h-[90vh] block md:hidden"
+			src="/img/ui/grave_texture_1.png"
+			alt="Background for small screens"
 		/>
 		<div
 			class="absolute inset-0 overflow-auto p-4 sm:p-6 md:p-8 lg:p-12 text-white"
@@ -149,63 +160,63 @@ import Layout from "../layouts/Layout.astro";
 				class="relative z-10 max-w-[80%] flex flex-col justify-center mt-16 mx-auto"
 			>
 				<h2
-					class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fuente-handwritte font-bold mb-4"
+					class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fuente-handwritte font-bold my-1 lg:my-4"
 				>
 					Aconsejamos
 				</h2>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					1) Utilizar el modo kiosko para una mejor experiencia
 				</p>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					2) Una resolucion de 1920x1080 con aspecto de 16:9
 				</p>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					3) Paciencia, usamos Cloudinary y las peticiones de imágenes
 					y subidas fallan algunas veces. Puedes pulsar F5 o recargar
 					la página.
 				</p>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					4) Jugar la historia varias veces con distintas decisiones.
 				</p>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					5) Subir las fotos en aspecto 1:1 o verticales con la
 					persona centrada en la imagen y fondo visible.
 				</p>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					6) Consultar el botón inferior-izquierdo para ver
 					funcionalidades y apartados.
 				</p>
 				<h2
-					class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fuente-handwritte font-bold my-4"
+					class="text-xl sm:text-2xl md:text-3xl lg:text-4xl fuente-handwritte font-bold my-1 lg:my-4"
 				>
 					Agradecimientos
 				</h2>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					1) Midudev & Cloudinary por la organización del evento.
 				</p>
 				<p
-					class="text-sm sm:text-base md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
+					class="text-xs md:text-lg fuente-urbanist font-extralight tracking-wider pt-2"
 				>
 					2) Comunidad dev y sus aportaciones constantes.
 				</p>
 
 				<button
 					id="closeModalButton"
-					class="text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
+					class="lg:text-xl fuente-handwritte font-bold pt-4 tracking-widest hover:animate-horizontal-vibration hover:animate-duration-fast hover:animate-iteration-count-infinite"
 					>Cerrar</button
 				>
 			</div>

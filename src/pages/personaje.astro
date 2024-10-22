@@ -5,7 +5,7 @@ import { CldUploadWidget } from "astro-cloudinary";
 
 <Layout title="Spooky Hackaton - Crea tu personaje">
     <main
-        class="hidden lg:flex items-center justify-center h-screen w-screen overflow-hidden animate-fade-in animate-duration-slower"
+        class="flex items-center justify-center h-screen w-screen overflow-hidden animate-fade-in animate-duration-slower"
     >
         <div id="animatorContainer" class="absolute inset-0 z-40 hidden">
             <img
@@ -55,16 +55,21 @@ import { CldUploadWidget } from "astro-cloudinary";
                 class="absolute inset-0 z-40 bg-[url('/img/ui/backgrounds/composition_character/1.png')] bg-cover lg:bg-center bg-no-repeat"
             >
             </div>
+            <img
+                class="absolute md:hidden z-50 bottom-0 left-0 right-0 mx-auto"
+                src="/img/ui/backgrounds/composition_character/4.png"
+                alt="Image Description"
+            />
             <!--Front layer -->
             <div class="absolute inset-0 z-50 flex items-center justify-center">
                 <div
-                    class="w-[17%] h-[60%] flex items-center justify-center mt-44"
+                    class="w-[60%] md:w-[17%] md:h-[60%] flex items-center justify-center mt-56 md:mt-44"
                 >
                     <div
-                        class="w-full h-full overflow-clip flex flex-col items-center"
+                        class="md:w-full md:h-full overflow-clip flex flex-col items-center"
                     >
                         <span
-                            class="h-24 w-24 md:h-48 md:w-48 rounded-full block border border-white mt-8 cursor-pointer overflow-hidden"
+                            class="h-32 w-32 md:h-48 md:w-48 rounded-full block border border-white mt-8 cursor-pointer overflow-hidden"
                         >
                             <two-up>
                                 <img

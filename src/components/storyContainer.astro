@@ -7,10 +7,12 @@ const { titulo, texto } = Astro.props;
 ---
 
 <article class="h-auto w-auto p-8 rounded-2xl">
-    <h2 class="text-7xl text-black fuente-handwritte font-bold">{titulo}</h2>
-    <hr class="sep-3" />
+    <h2 class="text-2xl md:text-7xl text-black fuente-handwritte font-bold">
+        {titulo}
+    </h2>
+    <hr class="sep-3 mt-2 md:mt-8" />
     <p
-        class="mt-10 mb-4 fuente-urbanist text-2xl tracking-widest font-medium"
+        class="mt-2 md:mt-10 md:mb-4 fuente-urbanist md:text-2xl tracking-widest font-medium"
     >
         {texto}
     </p>
@@ -19,7 +21,6 @@ const { titulo, texto } = Astro.props;
     hr.sep-3 {
         border: none;
         height: 1px;
-        margin-top: 20px;
         background-image: linear-gradient(to right, #f0f0f0, #8f8f8f, #f0f0f0);
     }
     hr.sep-3::after {
