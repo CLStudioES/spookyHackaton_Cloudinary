@@ -21,18 +21,19 @@ import Layout from "../layouts/Layout.astro";
 		if (infoModalInicial) {
 			console.log("Closing modal");
 			infoModalInicial.classList.add("hidden");
-			// Or use your custom classes:
-			// infoModalInicial.classList.remove("modal-visible");
-			// infoModalInicial.classList.add("modal-hidden");
 		} else {
 			console.error("Element with ID 'infoModalInicial' not found");
 		}
-		// Call playGif() if needed
 		playGif();
 	}
 </script>
 <Layout title="Spooky Hackaton">
 	<main class="lg:overflow-hidden">
+		<div
+			id="fullscreenOverlay"
+			class="absolute inset-0 bg-black z-50 hidden"
+		>
+		</div>
 		<div class="relative h-screen w-screen">
 			<!--Animaciones -->
 			<div id="animatorContainer" class="absolute inset-0 z-40">
@@ -219,6 +220,7 @@ import Layout from "../layouts/Layout.astro";
 	const gif2 = document.getElementById("ghostAnimation2");
 	const animatorContainer = document.getElementById("animatorContainer");
 	const animatorContainer2 = document.getElementById("animatorContainer2");
+	const fullscreenOverlay = document.getElementById("fullscreenOverlay");
 
 	function changePage() {
 		const gif = document.getElementById("ghostAnimation3");
@@ -231,10 +233,13 @@ import Layout from "../layouts/Layout.astro";
 			"duration-1000",
 		);
 		gif.classList.remove("hidden");
-		setTimeout(changePageStep2, 2000);
+		setTimeout(changePageStep2, 1600);
 	}
 
 	function changePageStep2() {
+		//Poner la pantalla en negro
+		fullscreenOverlay.classList.remove("hidden");
+		gif.classList.remove("add");
 		window.location.href = "/personaje";
 	}
 
